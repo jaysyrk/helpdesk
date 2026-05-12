@@ -1,0 +1,2 @@
+{% set colors = {'Open': 'danger', 'In Progress': 'warning', 'Resolved': 'success', 'Closed': 'secondary'} %}
+<span class="badge bg-{{ colors.get(t.status, 'secondary') }}">{{ t.status }}</span>

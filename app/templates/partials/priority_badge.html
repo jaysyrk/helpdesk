@@ -1,0 +1,2 @@
+{% set colors = {'Low': 'success', 'Medium': 'primary', 'High': 'warning', 'Critical': 'danger'} %}
+<span class="badge bg-{{ colors.get(t.priority, 'secondary') }}">{{ t.priority }}</span>
