@@ -1,5 +1,9 @@
 :root {
-  --bs-body-bg: #f4f6f9;
+  --bs-body-bg: #eef1f6;
+  --card-border: #d0d7e3;
+  --card-radius: .6rem;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,.07), 0 2px 8px rgba(0,0,0,.06);
+  --shadow-hover: 0 4px 16px rgba(0,0,0,.12);
 }
 
 body {
@@ -9,7 +13,22 @@ body {
 
 /* Navbar */
 .navbar {
-  border-bottom: 1px solid rgba(255,255,255,.1);
+  border-bottom: 1px solid rgba(0,0,0,.18);
+  box-shadow: 0 2px 8px rgba(0,0,0,.15);
+}
+
+/* Cards — defined borders + clean shadow */
+.card {
+  border-radius: var(--card-radius) !important;
+  border: 1px solid var(--card-border) !important;
+  box-shadow: var(--shadow-sm) !important;
+}
+
+.card-header {
+  border-bottom: 1px solid var(--card-border) !important;
+  background: #f8f9fb !important;
+  border-radius: var(--card-radius) var(--card-radius) 0 0 !important;
+  padding: .75rem 1.25rem;
 }
 
 /* KPI cards */
@@ -18,29 +37,49 @@ body {
 }
 .kpi-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 .5rem 1.5rem rgba(0,0,0,.12) !important;
+  box-shadow: var(--shadow-hover) !important;
+  border-color: #b3bfcf !important;
 }
 .kpi-icon {
   line-height: 1;
 }
 
-/* Card polish */
-.card {
-  border-radius: .75rem;
-}
-
-/* Table row hover cursor set in template */
+/* Table styling */
 .table thead th {
-  font-size: .8rem;
+  font-size: .75rem;
   text-transform: uppercase;
-  letter-spacing: .05em;
-  color: #6c757d;
-  font-weight: 600;
+  letter-spacing: .06em;
+  color: #5a6680;
+  font-weight: 700;
+  background: #f0f3f8;
+  border-bottom: 2px solid var(--card-border) !important;
 }
 
-/* Badge sizes */
+.table tbody tr {
+  border-bottom: 1px solid #e8ecf2;
+}
+
+.table tbody tr:last-child {
+  border-bottom: none;
+}
+
+/* Form controls — sharper inputs */
+.form-control, .form-select {
+  border: 1px solid #c4cdd9;
+  border-radius: .45rem;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,.04);
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+
+.form-control:focus, .form-select:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 3px rgba(13,110,253,.15), inset 0 1px 2px rgba(0,0,0,.04);
+}
+
+/* Badge */
 .badge {
   font-weight: 500;
+  letter-spacing: .02em;
 }
 
 /* Comment avatar */
@@ -62,4 +101,9 @@ body {
 /* Overdue row left border */
 .table tbody tr:has(.sla-overdue) {
   border-left: 3px solid var(--bs-danger);
+}
+
+/* Slightly inset page sections */
+.container-fluid {
+  max-width: 1400px;
 }
