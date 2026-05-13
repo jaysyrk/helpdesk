@@ -30,24 +30,24 @@ def index():
     recent_tickets = Ticket.query.order_by(Ticket.created_at.desc()).limit(5).all()
 
     # Priority distribution (for chart)
-    priority_data = db.session.query(
+    priority_data = [(p, c) for p, c in db.session.query(
         Ticket.priority, func.count(Ticket.id)
-    ).group_by(Ticket.priority).all()
+    ).group_by(Ticket.priority).all()]
 
     # Category distribution (for chart)
-    category_data = db.session.query(
+    category_data = [(cat, c) for cat, c in db.session.query(
         Ticket.category, func.count(Ticket.id)
-    ).group_by(Ticket.category).all()
+    ).group_by(Ticket.category).all()]
 
     # Status distribution (for chart)
-    status_data = db.session.query(
+    status_data = [(s, c) for s, c in db.session.query(
         Ticket.status, func.count(Ticket.id)
-    ).group_by(Ticket.status).all()
+    ).group_by(Ticket.status).all()]
 
     # Asset type distribution
-    asset_type_data = db.session.query(
+    asset_type_data = [(at, c) for at, c in db.session.query(
         Asset.asset_type, func.count(Asset.id)
-    ).group_by(Asset.asset_type).all()
+    ).group_by(Asset.asset_type).all()]
 
     return render_template('dashboard.html',
         total_tickets=total_tickets,
